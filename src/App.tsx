@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { ADDRESS } from "./secret";
-interface BaseType {
-	user: string;
-	message: string;
-};
+import { BaseType } from "./type";
+
 const App: React.FC = () => {
 	const [info, setInfo] = useState<Array<BaseType>>([]);
 	useEffect(() => {
@@ -24,10 +22,10 @@ const App: React.FC = () => {
 		fetchData();
 	}, []);
 	const resource = info.map(x =>
-		<>
-			<p>user : {x.user}</p>
-			<p>message : {x.message}</p>
-		</>
+		<div className="container">
+			<p className="box">user : @{x.user}</p>
+			<p className="box">message : {x.message}</p>
+		</div>
 	);
 	return (
 		<>
